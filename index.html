@@ -1,822 +1,832 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiyao Zhang - Data Science & AI Portfolio</title>
-    <style>
-        /* Global Styles */
-        :root {
-            --primary-color: #d9a520; /* Customized to match CV's gold color */
-            --secondary-color: #24292e;
-            --text-color: #333;
-            --light-bg: #f6f8fa;
-            --border-color: #e1e4e8;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-        
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #c0910e;
-            text-decoration: none;
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 20px 0;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 20px;
-        }
-        
-        .nav-links a {
-            color: white;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background-color: var(--light-bg);
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* About Section */
-        .about {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2rem;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .skills {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .skill-tag {
-            background-color: var(--light-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 5px 15px;
-            font-size: 0.9rem;
-        }
-        
-        /* Projects Section */
-        .projects {
-            padding: 80px 0;
-            background-color: var(--light-bg);
-        }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        
-        .project-content {
-            padding: 20px;
-        }
-        
-        .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin: 10px 0;
-        }
-        
-        .project-tag {
-            background-color: var(--light-bg);
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 20px;
-        }
-        
-        /* Experience Section */
-        .experience {
-            padding: 80px 0;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: var(--border-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::after {
-            right: -10px;
-        }
-        
-        .right::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timeline-content h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .timeline-content h4 {
-            margin-bottom: 10px;
-            font-weight: normal;
-            font-style: italic;
-        }
-        
-        /* Education Section */
-        .education {
-            padding: 80px 0;
-            background-color: var(--light-bg);
-        }
-        
-        .education-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .education-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-        
-        .education-card h4 {
-            margin-bottom: 10px;
-        }
-        
-        .education-card p {
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        
-        .education-content {
-            margin-top: 10px;
-        }
-        
-        /* Publications Section */
-        .publications {
-            padding: 80px 0;
-        }
-        
-        .publication-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .publication-item:last-child {
-            border-bottom: none;
-        }
-        
-        .publication-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .publication-item p {
-            margin-bottom: 10px;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background-color: var(--light-bg);
-        }
-        
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-links {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .contact-links li {
-            margin-bottom: 10px;
-        }
-        
-        .contact-links i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        
-        .social-links {
-            margin-bottom: 20px;
-        }
-        
-        .social-links a {
-            color: white;
-            margin: 0 10px;
-            font-size: 1.2rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item::after {
-                left: 21px;
-            }
-            
-            .left::after, .right::after {
-                left: 21px;
-            }
-            
-            .right {
-                left: 0;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yiyao Zhang — Academic Homepage</title>
+  <meta name="description" content="Academic homepage of Yiyao Zhang — researcher in Multi-Agent Reinforcement Learning (MARL), Expert Systems, Causal Inference, and Intelligent Autonomous Systems." />
+  <meta name="keywords" content="MARL, Multi-Agent Reinforcement Learning, Expert Systems, Causal Inference, Reinforcement Learning, Autonomous Systems, AI, Machine Learning, Yiyao Zhang" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1a2744;
+      --blue:      #2563eb;
+      --blue-lt:   #3b82f6;
+      --teal:      #0d9488;
+      --accent:    #f59e0b;
+      --bg:        #f8fafc;
+      --surface:   #ffffff;
+      --border:    #e2e8f0;
+      --text:      #1e293b;
+      --muted:     #64748b;
+      --tag-marl:  #dbeafe;
+      --tag-marl-t:#1d4ed8;
+      --tag-exp:   #d1fae5;
+      --tag-exp-t: #065f46;
+      --tag-causal:#fef3c7;
+      --tag-causal-t:#92400e;
+      --tag-fin:   #ede9fe;
+      --tag-fin-t: #5b21b6;
+      --radius:    10px;
+      --shadow:    0 2px 12px rgba(0,0,0,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    nav .brand {
+      color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: .02em;
+    }
+    nav ul {
+      list-style: none; display: flex; gap: 1.6rem;
+    }
+    nav ul li a {
+      color: #cbd5e1; font-size: .85rem; font-weight: 500;
+      transition: color .2s;
+    }
+    nav ul li a:hover { color: #fff; text-decoration: none; }
+
+    /* ── Layout ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    section { padding: 3.5rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    h2.section-title {
+      font-family: 'Merriweather', serif;
+      font-size: 1.45rem; font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    h2.section-title::after {
+      content: ''; flex: 1; height: 2px;
+      background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
+      border-radius: 2px;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a6e 60%, #0f4c75 100%);
+      color: #fff; padding: 4.5rem 0 3.5rem;
+    }
+    .hero-inner {
+      display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;
+    }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue-lt));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+      border: 3px solid rgba(255,255,255,.25);
+    }
+    .hero-text h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem; font-weight: 700; margin-bottom: .35rem;
+    }
+    .hero-text .subtitle {
+      font-size: .95rem; color: #93c5fd; margin-bottom: .8rem;
+    }
+    .hero-text .location {
+      font-size: .85rem; color: #94a3b8; margin-bottom: 1.1rem;
+    }
+    .hero-contacts {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+    }
+    .hero-contacts a {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #e0f2fe; font-size: .8rem; padding: .3rem .75rem;
+      border-radius: 20px; transition: background .2s;
+    }
+    .hero-contacts a:hover { background: rgba(255,255,255,.2); text-decoration: none; }
+
+    /* ── Research Statement ── */
+    .research-box {
+      background: var(--surface);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow);
+      font-family: 'Merriweather', serif;
+      font-size: .95rem; line-height: 1.8; color: #334155;
+    }
+
+    /* ── Keywords ── */
+    .keywords { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.2rem; }
+    .kw {
+      display: inline-block; padding: .3rem .85rem;
+      border-radius: 20px; font-size: .78rem; font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .kw-marl   { background: var(--tag-marl);  color: var(--tag-marl-t); }
+    .kw-exp    { background: var(--tag-exp);   color: var(--tag-exp-t); }
+    .kw-causal { background: var(--tag-causal); color: var(--tag-causal-t); }
+    .kw-fin    { background: var(--tag-fin);   color: var(--tag-fin-t); }
+    .kw-rl     { background: #fce7f3; color: #9d174d; }
+    .kw-cyber  { background: #fee2e2; color: #991b1b; }
+
+    /* ── Education ── */
+    .edu-grid { display: grid; gap: 1rem; }
+    .edu-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: start; gap: .3rem .8rem;
+    }
+    .edu-card .degree {
+      font-weight: 600; color: var(--navy); font-size: .95rem;
+    }
+    .edu-card .inst {
+      font-size: .85rem; color: var(--muted); grid-column: 1;
+    }
+    .edu-card .gpa {
+      font-size: .8rem; color: var(--teal); font-weight: 600;
+      grid-column: 2; grid-row: 1 / 3; text-align: right;
+      white-space: nowrap;
+    }
+    .edu-card .period {
+      font-size: .78rem; color: var(--muted); grid-column: 1;
+    }
+    .edu-note {
+      font-size: .78rem; color: #94a3b8; font-style: italic; margin-top: .2rem;
+    }
+
+    /* ── Publications ── */
+    .pub-list { display: grid; gap: 1rem; }
+    .pub-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .pub-card .pub-title {
+      font-weight: 600; color: var(--navy); font-size: .93rem;
+      margin-bottom: .3rem; line-height: 1.5;
+    }
+    .pub-card .pub-authors {
+      font-size: .82rem; color: var(--muted); margin-bottom: .35rem;
+    }
+    .pub-card .pub-authors strong { color: var(--text); }
+    .pub-card .pub-venue {
+      font-size: .8rem; color: var(--teal); font-weight: 600;
+    }
+    .pub-badge {
+      display: inline-block; padding: .15rem .6rem;
+      border-radius: 12px; font-size: .72rem; font-weight: 700;
+      margin-left: .5rem; vertical-align: middle;
+    }
+    .badge-published { background: #dcfce7; color: #166534; }
+    .badge-submitted { background: #fef9c3; color: #713f12; }
+    .badge-wip       { background: #f1f5f9; color: #475569; }
+    .badge-q1        { background: #dbeafe; color: #1e40af; }
+    .badge-coreB     { background: #ede9fe; color: #5b21b6; }
+
+    /* ── Manuscripts subsections ── */
+    .pub-sub-title {
+      font-size: .82rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em;
+      margin: 1.4rem 0 .6rem;
+    }
+
+    /* ── Experience ── */
+    .exp-list { display: grid; gap: 1.1rem; }
+    .exp-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+    }
+    .exp-header {
+      display: flex; justify-content: space-between; flex-wrap: wrap;
+      gap: .3rem; margin-bottom: .5rem;
+    }
+    .exp-role { font-weight: 600; color: var(--navy); font-size: .93rem; }
+    .exp-period { font-size: .8rem; color: var(--muted); white-space: nowrap; }
+    .exp-org { font-size: .85rem; color: var(--teal); margin-bottom: .5rem; }
+    .exp-bullets { list-style: none; padding: 0; }
+    .exp-bullets li {
+      font-size: .85rem; color: #475569; padding-left: 1.1rem;
+      position: relative; margin-bottom: .25rem;
+    }
+    .exp-bullets li::before {
+      content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 700;
+    }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .skill-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .skill-card h3 {
+      font-size: .8rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .skill-tag {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; font-size: .78rem; padding: .2rem .55rem;
+      color: var(--text);
+    }
+    .skill-tag.hi { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; font-weight: 600; }
+
+    /* ── Awards ── */
+    .awards-list { display: grid; gap: .7rem; }
+    .award-item {
+      display: flex; align-items: baseline; gap: .8rem;
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: .75rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .award-year { font-size: .78rem; font-weight: 700; color: var(--blue); white-space: nowrap; }
+    .award-name { font-size: .88rem; color: var(--text); }
+
+    /* ── Referees ── */
+    .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .ref-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.3rem;
+      box-shadow: var(--shadow);
+    }
+    .ref-name { font-weight: 700; color: var(--navy); font-size: .93rem; margin-bottom: .25rem; }
+    .ref-role { font-size: .8rem; color: var(--muted); margin-bottom: .4rem; line-height: 1.5; }
+    .ref-email { font-size: .8rem; color: var(--blue); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy); color: #94a3b8;
+      text-align: center; padding: 1.8rem 1rem;
+      font-size: .8rem;
+    }
+    footer a { color: #93c5fd; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-contacts { justify-content: center; }
+      nav ul { gap: .9rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Yiyao Zhang</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <span class="brand">Yiyao Zhang</span>
+  <ul>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#referees">Referees</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="avatar">YZ</div>
+      <div class="hero-text">
+        <h1>Yiyao Zhang</h1>
+        <div class="subtitle">
+          Master of Data Science, University of Adelaide &nbsp;·&nbsp;
+          Research Intern, Australian Institute of Machine Learning (AIML)
         </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="profile-img" style="display: flex; align-items: center; justify-content: center; background-color: var(--primary-color);">
-                    <i class="fas fa-user-circle" style="font-size: 100px; color: white;"></i>
-                </div>
-                <h1>Yiyao Zhang</h1>
-                <p>LLM_MLLM Algorithm Engineer & Data Scientist specializing in AI-driven solutions for data analysis and predictive modeling</p>
-                <a href="#contact" class="btn">Get In Touch</a>
-            </div>
+        <div class="location">&#x1F4CD; Adelaide, South Australia, Australia</div>
+        <div class="hero-contacts">
+          <a href="mailto:yiyao663@gmail.com">&#9993; yiyao663@gmail.com</a>
+          <a href="mailto:yiyao.zhang@student.adelaide.edu.au">&#9993; yiyao.zhang@student.adelaide.edu.au</a>
+          <a href="tel:+61489045586">&#128222; +61 0489 045 586</a>
         </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Results-driven Algorithm Engineer with a strong foundation in applied mathematics, statistics, and computer science. I'm currently pursuing a Master of Data Science at the University of Adelaide while working as a Research Intern at the Australian Institute of Machine Learning (AIML).</p>
-                    <p>I specialize in developing AI-driven solutions for data analysis and predictive modeling, including multi-agent large language models and their applications to investment finance. My experience spans across algorithm development, machine learning implementation, and statistical analysis.</p>
-                    <p>Previously, I worked as an Algorithm Engineer at Haier Electronics where I developed machine learning algorithms that improved forecast accuracy by 15% and created predictive models for sales trend analysis.</p>
-                    <p>I'm passionate about applying advanced mathematical concepts to solve real-world problems and continuously exploring new technologies in the AI and data science fields.</p>
-                </div>
-                <div id="skills" class="skills">
-                    <h3>Skills & Expertise</h3>
-                    <h4>AI & Machine Learning</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">NLP</span>
-                        <span class="skill-tag">Large Language Models</span>
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">Reinforcement Learning</span>
-                        <span class="skill-tag">Causal AI</span>
-                        <span class="skill-tag">Knowledge Graphs</span>
-                        <span class="skill-tag">Time Series Analysis</span>
-                    </div>
-                    
-                    <h4>Programming & Tools</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">SAS</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">TensorFlow/PyTorch</span>
-                    </div>
-                    
-                    <h4>Data Science & Analytics</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Statistical Modeling</span>
-                        <span class="skill-tag">Data Mining</span>
-                        <span class="skill-tag">Database Systems</span>
-                        <span class="skill-tag">Visualization</span>
-                        <span class="skill-tag">Scientific Computation</span>
-                    </div>
-                    
-                    <h4>Finance Knowledge</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Financial Analysis</span>
-                        <span class="skill-tag">Time Series Forecasting</span>
-                        <span class="skill-tag">Risk Assessment</span>
-                        <span class="skill-tag">Quantitative Analysis</span>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESEARCH STATEMENT ══════════════ -->
+<section id="research">
+  <div class="container">
+    <h2 class="section-title">Research Statement</h2>
+    <div class="research-box">
+      My research focuses on engineering intelligent systems capable of autonomous reasoning
+      and strategic support in high-stakes environments by integrating mathematical foundations
+      with causal inference and reinforcement learning. A central theme is the design of
+      <strong>Multi-Agent Reinforcement Learning (MARL)</strong> architectures that are
+      physics-informed, meta-learned, and hybrid — enabling robust coordination in complex,
+      adversarial, and partially observable settings. Complementing this, I develop
+      <strong>Expert Systems</strong> and explainable AI frameworks that translate learned
+      policies into interpretable, actionable intelligence for domains including cyber defence,
+      financial markets, and adaptive education.
+    </div>
+
+    <div class="keywords">
+      <span class="kw kw-marl">Multi-Agent Reinforcement Learning (MARL)</span>
+      <span class="kw kw-exp">Expert Systems</span>
+      <span class="kw kw-exp">Explainable AI (XAI)</span>
+      <span class="kw kw-rl">Reinforcement Learning</span>
+      <span class="kw kw-causal">Causal Inference</span>
+      <span class="kw kw-causal">Causal Deep Learning</span>
+      <span class="kw kw-cyber">Autonomous Cyber Defence</span>
+      <span class="kw kw-cyber">Adversarial MARL</span>
+      <span class="kw kw-fin">Algorithmic Trading</span>
+      <span class="kw kw-fin">Portfolio Optimisation</span>
+      <span class="kw kw-marl">Meta-Cognitive Agents</span>
+      <span class="kw kw-exp">Intelligent Tutoring Systems</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EDUCATION ══════════════ -->
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="degree">PhD Candidate — Statistics <span style="font-weight:400;font-size:.82rem;">(Qualifying Exam Passed)</span></div>
+        <div class="gpa">—</div>
+        <div class="inst">University of South Carolina, Columbia, USA</div>
+        <div class="period">2017 – 2020</div>
+        <div class="edu-note">Discontinued due to COVID-19 pandemic</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Master of Data Science</div>
+        <div class="gpa">GPA 6.3 / 7.0</div>
+        <div class="inst">University of Adelaide, Adelaide, Australia</div>
+        <div class="period">2024 – 2026</div>
+        <div class="edu-note">Global Citizenship Scholarship recipient</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Master of Data Science</div>
+        <div class="gpa">GPA 3.6 / 4.0</div>
+        <div class="inst">University of South Carolina, Columbia, USA</div>
+        <div class="period">2017 – 2019</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Bachelor — UCLA–CSST Summer Research Program</div>
+        <div class="gpa">GPA 3.8 / 4.0</div>
+        <div class="inst">University of California, Los Angeles, USA</div>
+        <div class="period">2014</div>
+        <div class="edu-note">CSST Scholarship &amp; Aoqing Tang International Exchange Scholarship</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Bachelor Exchange — Applied Mathematics</div>
+        <div class="gpa">GPA 3.7 / 4.0</div>
+        <div class="inst">Georgia Institute of Technology, Atlanta, USA</div>
+        <div class="period">2014</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Bachelor of Science — Computational Mathematics</div>
+        <div class="gpa">GPA 93 / 100</div>
+        <div class="inst">Jilin University (985 / 211, Top 2%), Changchun, China</div>
+        <div class="period">2011 – 2015</div>
+        <div class="edu-note">Aoqing Tang Honor Class · National Scholarship (Top Tier)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PUBLICATIONS ══════════════ -->
+<section id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications &amp; Manuscripts</h2>
+
+    <!-- Conference Papers -->
+    <div class="pub-sub-title">Conference Papers</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Synergistic MARL: Unifying Physics-Informed, Meta Learning, and Hybrid Learning
+          <span class="pub-badge badge-published">Published</span>
+          <span class="pub-badge badge-coreB">CORE B</span>
         </div>
-    </section>
-    
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Research Intern</h3>
-                        <h4>Australian Institute of Machine Learning (AIML) | 2023-Present</h4>
-                        <ul>
-                            <li>Studying AI technologies for stock and cryptocurrency market analysis</li>
-                            <li>Writing algorithmic trading codes and conducting backtesting</li>
-                            <li>Analyzing market patterns using machine learning and statistical methods</li>
-                            <li>Collaborating with researchers on financial applications of AI models</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <h3>Algorithm Engineer</h3>
-                        <h4>Haier Electronics | 2020-2023</h4>
-                        <ul>
-                            <li>Developed machine learning algorithms improving forecast accuracy by 15%</li>
-                            <li>Created predictive models for sales trend analysis</li>
-                            <li>Applied NLP techniques to analyze customer feedback data</li>
-                            <li>Designed database systems for efficient data storage and retrieval</li>
-                            <li>Developed automated reporting systems with interactive visualizations</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Teaching Assistant</h3>
-                        <h4>University of South Carolina | 2017-2020</h4>
-                        <ul>
-                            <li>Assisted professors in teaching statistical concepts and computational methods</li>
-                            <li>Developed instructional materials for data analysis using R and Python</li>
-                            <li>Conducted tutorial sessions on statistical modeling and machine learning</li>
-                            <li>Evaluated student assignments and provided constructive feedback</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <h3>Research Project Team Member</h3>
-                        <h4>Jilin University | 2012-2015</h4>
-                        <ul>
-                            <li>Conducted statistical analysis on large environmental datasets</li>
-                            <li>Developed generalized linear models to analyze environmental pollutants</li>
-                            <li>Applied machine learning techniques to identify patterns in complex data</li>
-                            <li>Published findings in peer-reviewed journals</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, Y. Dong, K. Yu, W. Liu, J. Zhou, B. Liang, F. Chen</div>
+        <div class="pub-venue">Australasian Joint Conference on Artificial Intelligence (AJCAI) — 2025</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          AI-Edu-App: An Integrated AI Platform for K-12 Learning
+          <span class="pub-badge badge-published">Published</span>
         </div>
-    </section>
-    
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            
-            <!-- University of Adelaide -->
-            <div class="education-card">
-                <h3>Master of Data Science</h3>
-                <h4>University of Adelaide, Australia | 2024-2026</h4>
-                <p>Global Citizenship Scholarship</p>
-                <div class="education-content">
-                    <strong>Coursework:</strong> Foundation of Computer Science A & B, Using Machine Learning Tools, Deep Learning Fundamentals, Applied Natural Language Processing, Data Taming, Data Literacy, Data Science PG, Big Data Project
-                </div>
-            </div>
-            
-            <!-- University of South Carolina -->
-            <div class="education-card">
-                <h3>Doctor of Philosophy (incomplete) in Statistics and Data Science</h3>
-                <h4>University of South Carolina, USA | 2017-2020</h4>
-                <p>University Teaching Assistantship</p>
-                <div class="education-content">
-                    <strong>Coursework:</strong> Advanced Statistical Modeling, Machine Learning Applications, Financial Time Series Analysis, Data Science, Mathematical Statistics, Generalized Linear Model, Statistical Computation, Applied Longitudinal Data Analysis, Nonparametric Statistics
-                </div>
-            </div>
-            
-            <!-- UCLA-CSST Summer Research Program -->
-            <div class="education-card">
-                <h3>UCLA-CSST Summer Research Program</h3>
-                <h4>University of California, Los Angeles | Summer 2014</h4>
-                <p>Applied Mathematics Track | CSST (Cross Discipline Scholar of Science and Technology) Scholarship</p>
-                <div class="education-content">
-                    <strong>Coursework:</strong> Optimization Methods, Alternating Direction Method of Multipliers (ADMM), Numerical Analysis
-                </div>
-            </div>
-            
-            <!-- Georgia Tech Exchange Program -->
-            <div class="education-card">
-                <h3>Exchange Student in Applied Mathematics</h3>
-                <h4>Georgia Institute of Technology | 2014</h4>
-                <p>International Exchange Scholarship</p>
-                <div class="education-content">
-                    <strong>Coursework:</strong> Abstract Algebra, Combinatorics, Numerical Analysis, College English
-                </div>
-            </div>
-            
-            <!-- Jilin University -->
-            <div class="education-card">
-                <h3>Bachelor of Science in Information and Computation Science</h3>
-                <h4>Jilin University, China | 2011-2015</h4>
-                <p>Aoqing Tang Honor Class | National Scholarships and University Scholarships</p>
-                <div class="education-content">
-                    <strong>Thesis:</strong> Multivariate Statistical Analysis and Forecast for Environmental Factors<br>
-                    <strong>Coursework:</strong> Scientific Computation Methods, Mathematical Analysis, Advanced Algebra, Analytic Geometry, Probability and Statistics, Ordinary and Partial Differential Equations, Numerical PDE, Real and Complex Analysis, Mathematical Modeling
-                </div>
-            </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, J. Huang, et al.</div>
+        <div class="pub-venue">ACM International Conference on Education Technology and Artificial Intelligence (ICETAI) — 2025</div>
+      </div>
+
+    </div>
+
+    <!-- Journal Articles -->
+    <div class="pub-sub-title">Journal Articles</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          RegimeFolio: A Regime-Aware ML System for Sectoral Portfolio Optimisation in Dynamic Markets
+          <span class="pub-badge badge-published">Published</span>
+          <span class="pub-badge badge-q1">Q1 Journal</span>
         </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background-color: #3498db;">
-                        <i class="fas fa-chart-line" style="font-size: 80px; color: white;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sales Forecasting System</h3>
-                        <p>Developed time series forecasting models to predict product sales, reducing forecast error by 18% compared to traditional methods.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">ARIMA</span>
-                            <span class="project-tag">Prophet</span>
-                            <span class="project-tag">Feature Engineering</span>
-                            <span class="project-tag">Time Series</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background-color: #e74c3c;">
-                        <i class="fas fa-comments" style="font-size: 80px; color: white;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Customer Sentiment Analysis Platform</h3>
-                        <p>Built NLP pipeline to process and analyze customer feedback from multiple channels, implementing sentiment analysis and topic modeling.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">NLP</span>
-                            <span class="project-tag">Sentiment Analysis</span>
-                            <span class="project-tag">Topic Modeling</span>
-                            <span class="project-tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background-color: #27ae60;">
-                        <i class="fas fa-leaf" style="font-size: 80px; color: white;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Environmental Factor Analysis</h3>
-                        <p>Analyzed PM2.5 concentration data using multivariate statistical methods and developed predictive models for pollution levels.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Statistical Modeling</span>
-                            <span class="project-tag">Data Visualization</span>
-                            <span class="project-tag">R</span>
-                            <span class="project-tag">SPSS</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background-color: #9b59b6;">
-                        <i class="fas fa-chart-bar" style="font-size: 80px; color: white;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Algorithmic Trading System</h3>
-                        <p>Developed algorithmic trading strategies for cryptocurrency markets using machine learning models to identify patterns and market indicators.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Machine Learning</span>
-                            <span class="project-tag">Algorithmic Trading</span>
-                            <span class="project-tag">Backtesting</span>
-                            <span class="project-tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, C. Szabo</div>
+        <div class="pub-venue">IEEE Access — 2025</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Research and Design of a Comprehensive University Public Mathematics Question Bank</div>
+        <div class="pub-authors">Q. Cao, <strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Network Security Technology and Application, (9), pp. 193–195 — 2014</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Multivariate Statistical Analysis and Prediction of Factors Affecting PM2.5</div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, G. Miao, et al.</div>
+        <div class="pub-venue">Journal of Resource Conservation and Environmental Protection — 2013</div>
+      </div>
+
+    </div>
+
+    <!-- Submitted Manuscripts -->
+    <div class="pub-sub-title">Submitted Manuscripts</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Explainable Autonomous Cyber Defense using Adversarial Multi-Agent Reinforcement Learning
+          <span class="pub-badge badge-submitted">Under Review</span>
         </div>
-    </section>
-    
-    <!-- Publications Section -->
-    <section id="publications" class="publications">
-        <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <div class="publication-item">
-                <h3>Multivariate Statistical Analysis of Environmental Factors in Urban Areas</h3>
-                <p>Journal of Environmental Science, 2015</p>
-                <p>Applied principal component analysis and factor analysis to identify key environmental factors affecting air quality in urban areas. Developed predictive models for PM2.5 concentration levels.</p>
-            </div>
-            <div class="publication-item">
-                <h3>Machine Learning Approaches for Sales Forecasting in Retail</h3>
-                <p>International Conference on Data Science and Analytics, 2022</p>
-                <p>Compared traditional time series methods with machine learning approaches for retail sales forecasting. Demonstrated superior performance of ensemble methods in handling seasonal patterns and external factors.</p>
-            </div>
-            <div class="publication-item">
-                <h3>Sentiment Analysis of Customer Feedback Using Deep Learning</h3>
-                <p>Journal of Business Intelligence, 2023</p>
-                <p>Implemented BERT-based models for sentiment analysis of customer feedback across multiple channels. Achieved 92% accuracy in sentiment classification and identified key topics of customer concern.</p>
-            </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad</div>
+        <div class="pub-venue">Submitted to <em>Expert Systems with Applications</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          AgentVM: Agentic Multi-Agent Software Vulnerability Management
+          <span class="pub-badge badge-submitted">Under Review</span>
         </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out to me through any of the following channels:</p>
-                    <ul class="contact-links">
-                        <li><i class="fas fa-envelope"></i> yiyao.zhang816@qq.com</li>
-                        <li><i class="fas fa-phone"></i> +61 0489 0455 86</li>
-                        <li><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/yiyao-zhang-3813a325a/</li>
-                        <li><i class="fab fa-github"></i> https://github.com/yzhang816-bit</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Adelaide, Australia</li>
-                    </ul>
-                </div>
-                <div class="contact-form">
-                    <h3>Send Me a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, H. Ahmad, et al.</div>
+        <div class="pub-venue">Submitted to <em>IEEE Software</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          AdapTutor: An Evolving Dual-Agent Framework for Synchronous Learner Support in Online Learning Environments
+          <span class="pub-badge badge-submitted">Under Review</span>
         </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-medium"></i></a>
-            </div>
-            <p>&copy; 2024 Yiyao Zhang. All Rights Reserved.</p>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, X. Fan, L. Yue</div>
+        <div class="pub-venue">Submitted to <em>IEEE Transactions on Learning Technologies</em></div>
+      </div>
+
+    </div>
+
+    <!-- Work in Progress -->
+    <div class="pub-sub-title">Work in Progress</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Meta-Cognitive Agents: Adaptive Reasoning with Hierarchical Task Decomposition
+          <span class="pub-badge badge-wip">WIP</span>
         </div>
-    </footer>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>NeurIPS</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          CausalVision: Interpretable Causal Structures in Multimodal Generative Models
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>NeurIPS</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Deep Causal Inference: Neural Kernel Methods for Optimal Experimental Design
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>ICML</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Causal-Guided Hierarchical RL with Adaptive Human Feedback
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>ICML</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Curvature-Aware Neural Networks for Robust Graph Representation Learning
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>ICLR</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Towards AI-Driven Cyber Deception Mechanism for Enterprise Networks: A Literature Review
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, et al.</div>
+        <div class="pub-venue">Preparing for <em>ACM Computing Surveys</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Adaptive Graph-Enhanced Sparse Hedging (AGESH): An Efficient Differentiable Framework for High-Dimensional Portfolios
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, Y. Dong, et al.</div>
+        <div class="pub-venue">Preparing for <em>Quantitative Finance</em></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EXPERIENCE ══════════════ -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Research &amp; Industry Experience</h2>
+
+    <div style="font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem;">Research</div>
+    <div class="exp-list" style="margin-bottom:1.8rem;">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Research Intern — AI for Financial Markets</div>
+          <div class="exp-period">2024 – 2025</div>
+        </div>
+        <div class="exp-org">Australian Institute of Machine Learning (AIML), Adelaide, Australia</div>
+        <ul class="exp-bullets">
+          <li>Investigated and implemented state-of-the-art deep learning techniques for algorithmic trading.</li>
+          <li>Designed and rigorously backtested strategies using PyTorch, Scikit-learn, and Pandas.</li>
+          <li>Collaborated with PhD researchers to adapt novel AI models for market pattern identification.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Teaching Assistant — Statistics</div>
+          <div class="exp-period">2017 – 2020</div>
+        </div>
+        <div class="exp-org">University of South Carolina, Columbia, USA</div>
+        <ul class="exp-bullets">
+          <li>Taught statistical concepts and data analysis techniques using R and Python.</li>
+          <li>Conducted tutorials on statistical modelling and machine learning fundamentals for undergraduate students.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Research Project Team Member</div>
+          <div class="exp-period">2012 – 2015</div>
+        </div>
+        <div class="exp-org">Jilin University, Changchun, China</div>
+        <ul class="exp-bullets">
+          <li>Developed generalised linear models and predictive frameworks for large environmental datasets.</li>
+          <li>Conducted statistical analysis using R and SPSS to identify patterns in complex environmental data.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem;">Industry</div>
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">AI &amp; Software Developer</div>
+          <div class="exp-period">2024 – 2025</div>
+        </div>
+        <div class="exp-org">Upwork – Syncove, Adelaide, Australia</div>
+        <ul class="exp-bullets">
+          <li>Designed quantitative analysis tools for financial markets and event forecasting using Pandas and NumPy.</li>
+          <li>Developed <em>Advanced Performance Analyzer Pro</em>, a Python-based desktop application for probabilistic recommendations.</li>
+          <li>Implemented risk-optimised allocation algorithms based on Modern Portfolio Theory.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Financial Product Investment Analyst</div>
+          <div class="exp-period">2025</div>
+        </div>
+        <div class="exp-org">Trademax Global Markets (TMGM), Adelaide, Australia</div>
+        <ul class="exp-bullets">
+          <li>Conducted market research and performance evaluation of CFD and forex products using Python.</li>
+          <li>Sourced and managed relationships with introducing brokers (IBs) and affiliates.</li>
+          <li>Developed sales strategies and provided tailored investment recommendations while managing compliance.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Algorithm Engineer</div>
+          <div class="exp-period">2020 – 2023</div>
+        </div>
+        <div class="exp-org">Haier Electronics, Qingdao, China</div>
+        <ul class="exp-bullets">
+          <li>Developed ML algorithms for sales volume forecasting, improving accuracy by 15%.</li>
+          <li>Applied NLP techniques to customer feedback to extract actionable product improvement insights.</li>
+          <li>Designed and maintained efficient database systems for large-scale sales analytics.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SKILLS ══════════════ -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Technical Skills &amp; Languages</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Python</span>
+          <span class="skill-tag hi">R</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Java</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>ML / AI Libraries</h3>
+        <div class="skill-tags">
+          <span class="skill-tag hi">PyTorch</span>
+          <span class="skill-tag hi">TensorFlow</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">LaTeX</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Languages &amp; Test Scores</h3>
+        <div class="skill-tags">
+          <span class="skill-tag hi">English — Fluent</span>
+          <span class="skill-tag hi">Mandarin — Native</span>
+          <span class="skill-tag">TOEFL 106/120</span>
+          <span class="skill-tag">PTE 75/90</span>
+          <span class="skill-tag">GRE 326/340</span>
+          <span class="skill-tag">GRE Math 900/910</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ AWARDS ══════════════ -->
+<section id="awards">
+  <div class="container">
+    <h2 class="section-title">Awards &amp; Honours</h2>
+    <div class="awards-list">
+      <div class="award-item">
+        <span class="award-year">2024–2026</span>
+        <span class="award-name">Global Citizenship Scholarship — University of Adelaide</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2025</span>
+        <span class="award-name">5th Place — AUCPL Coding Competition, University of Adelaide</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2017–2020</span>
+        <span class="award-name">University Teaching Assistantship — University of South Carolina</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2014</span>
+        <span class="award-name">UCLA CSST Scholarship &amp; Aoqing Tang International Exchange Scholarship</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2011–2015</span>
+        <span class="award-name">National Scholarship (Top Tier) &amp; University Scholarships — Jilin University</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2010</span>
+        <span class="award-name">Second Class Prize — National Olympiad in Informatics in Provinces (NOIP)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REFEREES ══════════════ -->
+<section id="referees">
+  <div class="container">
+    <h2 class="section-title">Referees</h2>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Ran Zhang</div>
+        <div class="ref-role">Vice President, Jilin University; Director, Tianyuan Mathematical Center in Northeast China; Dean, School of Mathematics, Jilin University</div>
+        <div class="ref-email"><a href="mailto:zhangran@jlu.edu.cn">zhangran@jlu.edu.cn</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Lin Liu</div>
+        <div class="ref-role">Director, 4LLab Data Analytics Group; Professor, STEM Unit, University of Adelaide</div>
+        <div class="ref-email"><a href="mailto:Lin.Liu@adelaide.edu.au">Lin.Liu@adelaide.edu.au</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Wotao Yin</div>
+        <div class="ref-role">Director, Decision Intelligence Lab, DAMO Academy, Alibaba Group US; Professor, UCLA</div>
+        <div class="ref-email"><a href="mailto:wotao.yin@alibaba-inc.com">wotao.yin@alibaba-inc.com</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Joshua Tebbs</div>
+        <div class="ref-role">Director &amp; Professor, Department of Statistics, University of South Carolina</div>
+        <div class="ref-email"><a href="mailto:tebbs@stat.sc.edu">tebbs@stat.sc.edu</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Yingfei Yi</div>
+        <div class="ref-role">Killam Memorial Scholar; Professor, Dept. of Mathematical &amp; Statistical Sciences, University of Alberta; Professor, Georgia Tech</div>
+        <div class="ref-email"><a href="mailto:yingfei@ualberta.ca">yingfei@ualberta.ca</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>
+    &copy; 2025 Yiyao Zhang &nbsp;·&nbsp;
+    <a href="mailto:yiyao663@gmail.com">yiyao663@gmail.com</a> &nbsp;·&nbsp;
+    Adelaide, South Australia, Australia
+  </p>
+  <p style="margin-top:.4rem;font-size:.75rem;color:#64748b;">
+    Research keywords: MARL &nbsp;·&nbsp; Expert Systems &nbsp;·&nbsp; Causal Inference &nbsp;·&nbsp; Autonomous Cyber Defence &nbsp;·&nbsp; Reinforcement Learning
+  </p>
+</footer>
+
 </body>
 </html>
