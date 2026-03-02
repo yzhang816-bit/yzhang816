@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yiyao Zhang — Academic Homepage</title>
+  <meta name="description" content="Academic homepage of Yiyao Zhang — researcher in Multi-Agent Reinforcement Learning (MARL), Expert Systems, Causal Inference, and Intelligent Autonomous Systems." />
+  <meta name="keywords" content="MARL, Multi-Agent Reinforcement Learning, Expert Systems, Causal Inference, Reinforcement Learning, Autonomous Systems, AI, Machine Learning, Yiyao Zhang" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1a2744;
+      --blue:      #2563eb;
+      --blue-lt:   #3b82f6;
+      --teal:      #0d9488;
+      --accent:    #f59e0b;
+      --bg:        #f8fafc;
+      --surface:   #ffffff;
+      --border:    #e2e8f0;
+      --text:      #1e293b;
+      --muted:     #64748b;
+      --tag-marl:  #dbeafe;
+      --tag-marl-t:#1d4ed8;
+      --tag-exp:   #d1fae5;
+      --tag-exp-t: #065f46;
+      --tag-causal:#fef3c7;
+      --tag-causal-t:#92400e;
+      --tag-fin:   #ede9fe;
+      --tag-fin-t: #5b21b6;
+      --radius:    10px;
+      --shadow:    0 2px 12px rgba(0,0,0,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    nav .brand {
+      color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: .02em;
+    }
+    nav ul {
+      list-style: none; display: flex; gap: 1.6rem;
+    }
+    nav ul li a {
+      color: #cbd5e1; font-size: .85rem; font-weight: 500;
+      transition: color .2s;
+    }
+    nav ul li a:hover { color: #fff; text-decoration: none; }
+
+    /* ── Layout ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    section { padding: 3.5rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    h2.section-title {
+      font-family: 'Merriweather', serif;
+      font-size: 1.45rem; font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    h2.section-title::after {
+      content: ''; flex: 1; height: 2px;
+      background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
+      border-radius: 2px;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a6e 60%, #0f4c75 100%);
+      color: #fff; padding: 4.5rem 0 3.5rem;
+    }
+    .hero-inner {
+      display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;
+    }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue-lt));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+      border: 3px solid rgba(255,255,255,.25);
+    }
+    .hero-text h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem; font-weight: 700; margin-bottom: .35rem;
+    }
+    .hero-text .subtitle {
+      font-size: .95rem; color: #93c5fd; margin-bottom: .8rem;
+    }
+    .hero-text .location {
+      font-size: .85rem; color: #94a3b8; margin-bottom: 1.1rem;
+    }
+    .hero-contacts {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+    }
+    .hero-contacts a {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #e0f2fe; font-size: .8rem; padding: .3rem .75rem;
+      border-radius: 20px; transition: background .2s;
+    }
+    .hero-contacts a:hover { background: rgba(255,255,255,.2); text-decoration: none; }
+
+    /* ── Research Statement ── */
+    .research-box {
+      background: var(--surface);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow);
+      font-family: 'Merriweather', serif;
+      font-size: .95rem; line-height: 1.8; color: #334155;
+    }
+
+    /* ── Keywords ── */
+    .keywords { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.2rem; }
+    .kw {
+      display: inline-block; padding: .3rem .85rem;
+      border-radius: 20px; font-size: .78rem; font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .kw-marl   { background: var(--tag-marl);  color: var(--tag-marl-t); }
+    .kw-exp    { background: var(--tag-exp);   color: var(--tag-exp-t); }
+    .kw-causal { background: var(--tag-causal); color: var(--tag-causal-t); }
+    .kw-fin    { background: var(--tag-fin);   color: var(--tag-fin-t); }
+    .kw-rl     { background: #fce7f3; color: #9d174d; }
+    .kw-cyber  { background: #fee2e2; color: #991b1b; }
+
+    /* ── Education ── */
+    .edu-grid { display: grid; gap: 1rem; }
+    .edu-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: start; gap: .3rem .8rem;
+    }
+    .edu-card .degree {
+      font-weight: 600; color: var(--navy); font-size: .95rem;
+    }
+    .edu-card .inst {
+      font-size: .85rem; color: var(--muted); grid-column: 1;
+    }
+    .edu-card .gpa {
+      font-size: .8rem; color: var(--teal); font-weight: 600;
+      grid-column: 2; grid-row: 1 / 3; text-align: right;
+      white-space: nowrap;
+    }
+    .edu-card .period {
+      font-size: .78rem; color: var(--muted); grid-column: 1;
+    }
+    .edu-note {
+      font-size: .78rem; color: #94a3b8; font-style: italic; margin-top: .2rem;
+    }
+
+    /* ── Publications ── */
+    .pub-list { display: grid; gap: 1rem; }
+    .pub-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .pub-card .pub-title {
+      font-weight: 600; color: var(--navy); font-size: .93rem;
+      margin-bottom: .3rem; line-height: 1.5;
+    }
+    .pub-card .pub-authors {
+      font-size: .82rem; color: var(--muted); margin-bottom: .35rem;
+    }
+    .pub-card .pub-authors strong { color: var(--text); }
+    .pub-card .pub-venue {
+      font-size: .8rem; color: var(--teal); font-weight: 600;
+    }
+    .pub-badge {
+      display: inline-block; padding: .15rem .6rem;
+      border-radius: 12px; font-size: .72rem; font-weight: 700;
+      margin-left: .5rem; vertical-align: middle;
+    }
+    .badge-published { background: #dcfce7; color: #166534; }
+    .badge-submitted { background: #fef9c3; color: #713f12; }
+    .badge-wip       { background: #f1f5f9; color: #475569; }
+    .badge-q1        { background: #dbeafe; color: #1e40af; }
+    .badge-coreB     { background: #ede9fe; color: #5b21b6; }
+
+    /* ── Manuscripts subsections ── */
+    .pub-sub-title {
+      font-size: .82rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em;
+      margin: 1.4rem 0 .6rem;
+    }
+
+    /* ── Experience ── */
+    .exp-list { display: grid; gap: 1.1rem; }
+    .exp-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+    }
+    .exp-header {
+      display: flex; justify-content: space-between; flex-wrap: wrap;
+      gap: .3rem; margin-bottom: .5rem;
+    }
+    .exp-role { font-weight: 600; color: var(--navy); font-size: .93rem; }
+    .exp-period { font-size: .8rem; color: var(--muted); white-space: nowrap; }
+    .exp-org { font-size: .85rem; color: var(--teal); margin-bottom: .5rem; }
+    .exp-bullets { list-style: none; padding: 0; }
+    .exp-bullets li {
+      font-size: .85rem; color: #475569; padding-left: 1.1rem;
+      position: relative; margin-bottom: .25rem;
+    }
+    .exp-bullets li::before {
+      content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 700;
+    }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .skill-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .skill-card h3 {
+      font-size: .8rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .skill-tag {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; font-size: .78rem; padding: .2rem .55rem;
+      color: var(--text);
+    }
+    .skill-tag.hi { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; font-weight: 600; }
+
+    /* ── Awards ── */
+    .awards-list { display: grid; gap: .7rem; }
+    .award-item {
+      display: flex; align-items: baseline; gap: .8rem;
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: .75rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .award-year { font-size: .78rem; font-weight: 700; color: var(--blue); white-space: nowrap; }
+    .award-name { font-size: .88rem; color: var(--text); }
+
+    /* ── Referees ── */
+    .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .ref-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.3rem;
+      box-shadow: var(--shadow);
+    }
+    .ref-name { font-weight: 700; color: var(--navy); font-size: .93rem; margin-bottom: .25rem; }
+    .ref-role { font-size: .8rem; color: var(--muted); margin-bottom: .4rem; line-height: 1.5; }
+    .ref-email { font-size: .8rem; color: var(--blue); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy); color: #94a3b8;
+      text-align: center; padding: 1.8rem 1rem;
+      font-size: .8rem;
+    }
+    footer a { color: #93c5fd; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-contacts { justify-content: center; }
+      nav ul { gap: .9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <span class="brand">Yiyao Zhang</span>
+  <ul>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#referees">Referees</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="avatar">YZ</div>
+      <div class="hero-text">
+        <h1>Yiyao Zhang</h1>
+        <div class="subtitle">
+          Master of Data Science, University of Adelaide &nbsp;·&nbsp;
+          Research Intern, Australian Institute of Machine Learning (AIML)
+        </div>
+        <div class="location">&#x1F4CD; Adelaide, South Australia, Australia</div>
+        <div class="hero-contacts">
+          <a href="mailto:yiyao663@gmail.com">&#9993; yiyao663@gmail.com</a>
+          <a href="mailto:yiyao.zhang@student.adelaide.edu.au">&#9993; yiyao.zhang@student.adelaide.edu.au</a>
+          <a href="tel:+61489045586">&#128222; +61 0489 045 586</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESEARCH STATEMENT ══════════════ -->
+<section id="research">
+  <div class="container">
+    <h2 class="section-title">Research Statement</h2>
+    <div class="research-box">
+      My research focuses on engineering intelligent systems capable of autonomous reasoning
+      and strategic support in high-stakes environments by integrating mathematical foundations
+      with causal inference and reinforcement learning. A central theme is the design of
+      <strong>Multi-Agent Reinforcement Learning (MARL)</strong> architectures that are
+      physics-informed, meta-learned, and hybrid — enabling robust coordination in complex,
+      adversarial, and partially observable settings. Complementing this, I develop
+      <strong>Expert Systems</strong> and explainable AI frameworks that translate learned
+      policies into interpretable, actionable intelligence for domains including cyber defence,
+      financial markets, and adaptive education.
+    </div>
+
+    <div class="keywords">
+      <span class="kw kw-marl">Multi-Agent Reinforcement Learning (MARL)</span>
+      <span class="kw kw-exp">Expert Systems</span>
+      <span class="kw kw-exp">Explainable AI (XAI)</span>
+      <span class="kw kw-rl">Reinforcement Learning</span>
+      <span class="kw kw-causal">Causal Inference</span>
+      <span class="kw kw-causal">Causal Deep Learning</span>
+      <span class="kw kw-cyber">Autonomous Cyber Defence</span>
+      <span class="kw kw-cyber">Adversarial MARL</span>
+      <span class="kw kw-fin">Algorithmic Trading</span>
+      <span class="kw kw-fin">Portfolio Optimisation</span>
+      <span class="kw kw-marl">Meta-Cognitive Agents</span>
+      <span class="kw kw-exp">Intelligent Tutoring Systems</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EDUCATION ══════════════ -->
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="degree">PhD Candidate — Statistics <span style="font-weight:400;font-size:.82rem;">(Qualifying Exam Passed)</span></div>
+        <div class="gpa">—</div>
+        <div class="inst">University of South Carolina, Columbia, USA</div>
+        <div class="period">2017 – 2020</div>
+        <div class="edu-note">Discontinued due to COVID-19 pandemic</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Master of Data Science</div>
+        <div class="gpa">GPA 6.3 / 7.0</div>
+        <div class="inst">University of Adelaide, Adelaide, Australia</div>
+        <div class="period">2024 – 2026</div>
+        <div class="edu-note">Global Citizenship Scholarship recipient</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Master of Data Science</div>
+        <div class="gpa">GPA 3.6 / 4.0</div>
+        <div class="inst">University of South Carolina, Columbia, USA</div>
+        <div class="period">2017 – 2019</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Bachelor — UCLA–CSST Summer Research Program</div>
+        <div class="gpa">GPA 3.8 / 4.0</div>
+        <div class="inst">University of California, Los Angeles, USA</div>
+        <div class="period">2014</div>
+        <div class="edu-note">CSST Scholarship &amp; Aoqing Tang International Exchange Scholarship</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Bachelor Exchange — Applied Mathematics</div>
+        <div class="gpa">GPA 3.7 / 4.0</div>
+        <div class="inst">Georgia Institute of Technology, Atlanta, USA</div>
+        <div class="period">2014</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">Bachelor of Science — Computational Mathematics</div>
+        <div class="gpa">GPA 93 / 100</div>
+        <div class="inst">Jilin University (985 / 211, Top 2%), Changchun, China</div>
+        <div class="period">2011 – 2015</div>
+        <div class="edu-note">Aoqing Tang Honor Class · National Scholarship (Top Tier)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PUBLICATIONS ══════════════ -->
+<section id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications &amp; Manuscripts</h2>
+
+    <!-- Conference Papers -->
+    <div class="pub-sub-title">Conference Papers</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Synergistic MARL: Unifying Physics-Informed, Meta Learning, and Hybrid Learning
+          <span class="pub-badge badge-published">Published</span>
+          <span class="pub-badge badge-coreB">CORE B</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, Y. Dong, K. Yu, W. Liu, J. Zhou, B. Liang, F. Chen</div>
+        <div class="pub-venue">Australasian Joint Conference on Artificial Intelligence (AJCAI) — 2025</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          AI-Edu-App: An Integrated AI Platform for K-12 Learning
+          <span class="pub-badge badge-published">Published</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, J. Huang, et al.</div>
+        <div class="pub-venue">ACM International Conference on Education Technology and Artificial Intelligence (ICETAI) — 2025</div>
+      </div>
+
+    </div>
+
+    <!-- Journal Articles -->
+    <div class="pub-sub-title">Journal Articles</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          RegimeFolio: A Regime-Aware ML System for Sectoral Portfolio Optimisation in Dynamic Markets
+          <span class="pub-badge badge-published">Published</span>
+          <span class="pub-badge badge-q1">Q1 Journal</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, C. Szabo</div>
+        <div class="pub-venue">IEEE Access — 2025</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Research and Design of a Comprehensive University Public Mathematics Question Bank</div>
+        <div class="pub-authors">Q. Cao, <strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Network Security Technology and Application, (9), pp. 193–195 — 2014</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Multivariate Statistical Analysis and Prediction of Factors Affecting PM2.5</div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, G. Miao, et al.</div>
+        <div class="pub-venue">Journal of Resource Conservation and Environmental Protection — 2013</div>
+      </div>
+
+    </div>
+
+    <!-- Submitted Manuscripts -->
+    <div class="pub-sub-title">Submitted Manuscripts</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Explainable Autonomous Cyber Defense using Adversarial Multi-Agent Reinforcement Learning
+          <span class="pub-badge badge-submitted">Under Review</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad</div>
+        <div class="pub-venue">Submitted to <em>Expert Systems with Applications</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          AgentVM: Agentic Multi-Agent Software Vulnerability Management
+          <span class="pub-badge badge-submitted">Under Review</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, H. Ahmad, et al.</div>
+        <div class="pub-venue">Submitted to <em>IEEE Software</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          AdapTutor: An Evolving Dual-Agent Framework for Synchronous Learner Support in Online Learning Environments
+          <span class="pub-badge badge-submitted">Under Review</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, X. Fan, L. Yue</div>
+        <div class="pub-venue">Submitted to <em>IEEE Transactions on Learning Technologies</em></div>
+      </div>
+
+    </div>
+
+    <!-- Work in Progress -->
+    <div class="pub-sub-title">Work in Progress</div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Meta-Cognitive Agents: Adaptive Reasoning with Hierarchical Task Decomposition
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>NeurIPS</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          CausalVision: Interpretable Causal Structures in Multimodal Generative Models
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>NeurIPS</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Deep Causal Inference: Neural Kernel Methods for Optimal Experimental Design
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>ICML</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Causal-Guided Hierarchical RL with Adaptive Human Feedback
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>ICML</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Curvature-Aware Neural Networks for Robust Graph Representation Learning
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, et al.</div>
+        <div class="pub-venue">Preparing for <em>ICLR</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Towards AI-Driven Cyber Deception Mechanism for Enterprise Networks: A Literature Review
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, et al.</div>
+        <div class="pub-venue">Preparing for <em>ACM Computing Surveys</em></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">
+          Adaptive Graph-Enhanced Sparse Hedging (AGESH): An Efficient Differentiable Framework for High-Dimensional Portfolios
+          <span class="pub-badge badge-wip">WIP</span>
+        </div>
+        <div class="pub-authors"><strong>Y. Zhang</strong>, Y. Dong, et al.</div>
+        <div class="pub-venue">Preparing for <em>Quantitative Finance</em></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EXPERIENCE ══════════════ -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Research &amp; Industry Experience</h2>
+
+    <div style="font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem;">Research</div>
+    <div class="exp-list" style="margin-bottom:1.8rem;">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Research Intern — AI for Financial Markets</div>
+          <div class="exp-period">2024 – 2025</div>
+        </div>
+        <div class="exp-org">Australian Institute of Machine Learning (AIML), Adelaide, Australia</div>
+        <ul class="exp-bullets">
+          <li>Investigated and implemented state-of-the-art deep learning techniques for algorithmic trading.</li>
+          <li>Designed and rigorously backtested strategies using PyTorch, Scikit-learn, and Pandas.</li>
+          <li>Collaborated with PhD researchers to adapt novel AI models for market pattern identification.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Teaching Assistant — Statistics</div>
+          <div class="exp-period">2017 – 2020</div>
+        </div>
+        <div class="exp-org">University of South Carolina, Columbia, USA</div>
+        <ul class="exp-bullets">
+          <li>Taught statistical concepts and data analysis techniques using R and Python.</li>
+          <li>Conducted tutorials on statistical modelling and machine learning fundamentals for undergraduate students.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Research Project Team Member</div>
+          <div class="exp-period">2012 – 2015</div>
+        </div>
+        <div class="exp-org">Jilin University, Changchun, China</div>
+        <ul class="exp-bullets">
+          <li>Developed generalised linear models and predictive frameworks for large environmental datasets.</li>
+          <li>Conducted statistical analysis using R and SPSS to identify patterns in complex environmental data.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem;">Industry</div>
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">AI &amp; Software Developer</div>
+          <div class="exp-period">2024 – 2025</div>
+        </div>
+        <div class="exp-org">Upwork – Syncove, Adelaide, Australia</div>
+        <ul class="exp-bullets">
+          <li>Designed quantitative analysis tools for financial markets and event forecasting using Pandas and NumPy.</li>
+          <li>Developed <em>Advanced Performance Analyzer Pro</em>, a Python-based desktop application for probabilistic recommendations.</li>
+          <li>Implemented risk-optimised allocation algorithms based on Modern Portfolio Theory.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Financial Product Investment Analyst</div>
+          <div class="exp-period">2025</div>
+        </div>
+        <div class="exp-org">Trademax Global Markets (TMGM), Adelaide, Australia</div>
+        <ul class="exp-bullets">
+          <li>Conducted market research and performance evaluation of CFD and forex products using Python.</li>
+          <li>Sourced and managed relationships with introducing brokers (IBs) and affiliates.</li>
+          <li>Developed sales strategies and provided tailored investment recommendations while managing compliance.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Algorithm Engineer</div>
+          <div class="exp-period">2020 – 2023</div>
+        </div>
+        <div class="exp-org">Haier Electronics, Qingdao, China</div>
+        <ul class="exp-bullets">
+          <li>Developed ML algorithms for sales volume forecasting, improving accuracy by 15%.</li>
+          <li>Applied NLP techniques to customer feedback to extract actionable product improvement insights.</li>
+          <li>Designed and maintained efficient database systems for large-scale sales analytics.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SKILLS ══════════════ -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Technical Skills &amp; Languages</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Python</span>
+          <span class="skill-tag hi">R</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Java</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>ML / AI Libraries</h3>
+        <div class="skill-tags">
+          <span class="skill-tag hi">PyTorch</span>
+          <span class="skill-tag hi">TensorFlow</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">LaTeX</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Languages &amp; Test Scores</h3>
+        <div class="skill-tags">
+          <span class="skill-tag hi">English — Fluent</span>
+          <span class="skill-tag hi">Mandarin — Native</span>
+          <span class="skill-tag">TOEFL 106/120</span>
+          <span class="skill-tag">PTE 75/90</span>
+          <span class="skill-tag">GRE 326/340</span>
+          <span class="skill-tag">GRE Math 900/910</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ AWARDS ══════════════ -->
+<section id="awards">
+  <div class="container">
+    <h2 class="section-title">Awards &amp; Honours</h2>
+    <div class="awards-list">
+      <div class="award-item">
+        <span class="award-year">2024–2026</span>
+        <span class="award-name">Global Citizenship Scholarship — University of Adelaide</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2025</span>
+        <span class="award-name">5th Place — AUCPL Coding Competition, University of Adelaide</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2017–2020</span>
+        <span class="award-name">University Teaching Assistantship — University of South Carolina</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2014</span>
+        <span class="award-name">UCLA CSST Scholarship &amp; Aoqing Tang International Exchange Scholarship</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2011–2015</span>
+        <span class="award-name">National Scholarship (Top Tier) &amp; University Scholarships — Jilin University</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2010</span>
+        <span class="award-name">Second Class Prize — National Olympiad in Informatics in Provinces (NOIP)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REFEREES ══════════════ -->
+<section id="referees">
+  <div class="container">
+    <h2 class="section-title">Referees</h2>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Ran Zhang</div>
+        <div class="ref-role">Vice President, Jilin University; Director, Tianyuan Mathematical Center in Northeast China; Dean, School of Mathematics, Jilin University</div>
+        <div class="ref-email"><a href="mailto:zhangran@jlu.edu.cn">zhangran@jlu.edu.cn</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Lin Liu</div>
+        <div class="ref-role">Director, 4LLab Data Analytics Group; Professor, STEM Unit, University of Adelaide</div>
+        <div class="ref-email"><a href="mailto:Lin.Liu@adelaide.edu.au">Lin.Liu@adelaide.edu.au</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Wotao Yin</div>
+        <div class="ref-role">Director, Decision Intelligence Lab, DAMO Academy, Alibaba Group US; Professor, UCLA</div>
+        <div class="ref-email"><a href="mailto:wotao.yin@alibaba-inc.com">wotao.yin@alibaba-inc.com</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Joshua Tebbs</div>
+        <div class="ref-role">Director &amp; Professor, Department of Statistics, University of South Carolina</div>
+        <div class="ref-email"><a href="mailto:tebbs@stat.sc.edu">tebbs@stat.sc.edu</a></div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Yingfei Yi</div>
+        <div class="ref-role">Killam Memorial Scholar; Professor, Dept. of Mathematical &amp; Statistical Sciences, University of Alberta; Professor, Georgia Tech</div>
+        <div class="ref-email"><a href="mailto:yingfei@ualberta.ca">yingfei@ualberta.ca</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>
+    &copy; 2025 Yiyao Zhang &nbsp;·&nbsp;
+    <a href="mailto:yiyao663@gmail.com">yiyao663@gmail.com</a> &nbsp;·&nbsp;
+    Adelaide, South Australia, Australia
+  </p>
+  <p style="margin-top:.4rem;font-size:.75rem;color:#64748b;">
+    Research keywords: MARL &nbsp;·&nbsp; Expert Systems &nbsp;·&nbsp; Causal Inference &nbsp;·&nbsp; Autonomous Cyber Defence &nbsp;·&nbsp; Reinforcement Learning
+  </p>
+</footer>
+
+</body>
+</html>
