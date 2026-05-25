@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yiyao Zhang — CV</title>
+<style>
+  :root {
+    --navy: #1F4E79;
+    --navy-light: #2E6DA4;
+    --navy-pale: #EBF3FA;
+    --navy-mid: #B5D4F4;
+    --accent: #0F6E56;
+    --accent-pale: #E1F5EE;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --text-light: #888;
+    --border: #e0e0e0;
+    --border-strong: #c5c5c5;
+    --surface: #f8f9fb;
+    --white: #ffffff;
+    --amber: #BA7517;
+    --amber-pale: #FAEEDA;
+    --coral: #993C1D;
+    --coral-pale: #FAECE7;
+    --purple: #534AB7;
+    --purple-pale: #EEEDFE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  a { color: var(--navy-light); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── HEADER ── */
+  .cv-header {
+    background: var(--navy);
+    color: white;
+    padding: 36px 48px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cv-header::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 280px;
+    background: rgba(255,255,255,0.035);
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .cv-header::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 80px; bottom: 0;
+    width: 140px;
+    background: rgba(255,255,255,0.025);
+    clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .cv-name {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+  }
+  .cv-tagline {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 18px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    z-index: 1;
+  }
+  .cv-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 12.5px;
+    font-family: 'Arial', sans-serif;
+    color: rgba(255,255,255,0.82);
+    position: relative;
+    z-index: 1;
+  }
+  .cv-contacts a { color: rgba(255,255,255,0.92); }
+  .cv-contacts span::before { content: '·'; margin-right: 6px; opacity: 0.5; }
+  .cv-contacts span:first-child::before { display: none; }
+
+  /* ── BODY LAYOUT ── */
+  .cv-body {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 0 48px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+  }
+
+  /* ── SIDEBAR ── */
+  .cv-sidebar {
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    padding: 28px 22px;
+  }
+  .cv-main {
+    padding: 28px 28px 0;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-title {
+    font-size: 10px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: var(--navy);
+    border-bottom: 2px solid var(--navy-pale);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    margin-top: 26px;
+  }
+  .section-title:first-child { margin-top: 0; }
+
+  /* ── RESEARCH STATEMENT ── */
+  .statement-box {
+    background: var(--navy-pale);
+    border-left: 3px solid var(--navy);
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 22px;
+  }
+  .statement-box strong { color: var(--navy); }
+
+  /* ── INTEREST TAGS ── */
+  .interest-grid { display: flex; flex-direction: column; gap: 10px; }
+  .interest-item { }
+  .interest-label {
+    font-size: 11.5px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .interest-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── SKILL CHIPS ── */
+  .skill-section { margin-bottom: 8px; }
+  .skill-category {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    background: var(--surface);
+    white-space: nowrap;
+  }
+  .chip.blue { background: var(--navy-pale); border-color: var(--navy-mid); color: var(--navy); }
+  .chip.green { background: var(--accent-pale); border-color: #9FE1CB; color: var(--accent); }
+  .chip.amber { background: var(--amber-pale); border-color: #FAC775; color: var(--amber); }
+
+  /* ── AWARDS ── */
+  .award-list { list-style: none; }
+  .award-list li {
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 5px 0 5px 14px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .award-list li:last-child { border-bottom: none; }
+  .award-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+    font-size: 10px;
+    top: 7px;
+  }
+  .award-year {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    color: var(--text-light);
+    display: block;
+  }
+
+  /* ── MEMBERSHIPS ── */
+  .membership-list { list-style: none; }
+  .membership-list li {
+    font-size: 12.5px;
+    padding: 4px 0;
+    color: var(--text-muted);
+    border-bottom: 1px dotted var(--border);
+    font-family: 'Arial', sans-serif;
+  }
+  .membership-list li:last-child { border-bottom: none; }
+
+  /* ── EDUCATION TIMELINE ── */
+  .edu-timeline { position: relative; }
+  .edu-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .edu-dot {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--navy);
+    margin-top: 5px;
+    position: relative;
+    z-index: 1;
+  }
+  .edu-dot.minor {
+    background: var(--white);
+    border: 2px solid var(--navy-mid);
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+  }
+  .edu-line {
+    position: absolute;
+    left: 4px;
+    top: 15px;
+    bottom: -14px;
+    width: 1px;
+    background: var(--border);
+  }
+  .edu-item:last-child .edu-line { display: none; }
+  .edu-content { flex: 1; }
+  .edu-inst {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .edu-degree {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 1px 0;
+  }
+  .edu-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .edu-years {
+    font-size: 11.5px;
+    font-family: 'Arial', sans-serif;
+    color: var(--navy-light);
+    font-weight: 600;
+  }
+  .edu-gpa {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    background: var(--navy-pale);
+    color: var(--navy);
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .edu-note {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-list { list-style: none; counter-reset: pub-counter; }
+  .pub-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    counter-increment: pub-counter;
+  }
+  .pub-item:last-child { border-bottom: none; }
+  .pub-num {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-light);
+    min-width: 22px;
+    padding-top: 2px;
+    text-align: right;
+  }
+  .pub-body { flex: 1; }
+  .pub-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .pub-title a { color: var(--navy-light); }
+  .pub-authors {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 2px 0;
+  }
+  .pub-authors strong { color: var(--text); }
+  .pub-venue {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+  .pub-badges { display: flex; gap: 5px; margin-top: 4px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10.5px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .badge-if { background: var(--accent-pale); color: var(--accent); border: 1px solid #9FE1CB; }
+  .badge-venue { background: var(--navy-pale); color: var(--navy); border: 1px solid var(--navy-mid); }
+  .badge-review { background: var(--amber-pale); color: var(--amber); border: 1px solid #FAC775; }
+  .badge-conf { background: var(--purple-pale); color: var(--purple); border: 1px solid #AFA9EC; }
+  .badge-rank { background: var(--coral-pale); color: var(--coral); border: 1px solid #F0997B; }
+  .badge-year { background: var(--surface); color: var(--text-light); border: 1px solid var(--border-strong); }
+
+  .pub-group-label {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 16px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  /* ── PROJECTS ── */
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: var(--white);
+    border-left: 3px solid var(--navy);
+    transition: border-color 0.15s;
+  }
+  .project-card:hover { border-left-color: var(--navy-light); border-color: var(--navy-mid); }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
+  .project-title { font-size: 13.5px; font-weight: 700; color: var(--text); flex: 1; }
+  .project-years { font-size: 11px; font-family: 'Arial', sans-serif; color: var(--navy-light); font-weight: 600; white-space: nowrap; }
+  .project-collab { font-size: 12px; color: var(--text-light); font-style: italic; margin-bottom: 6px; }
+  .project-output { font-size: 11.5px; font-family: 'Arial', sans-serif; font-weight: 700; color: var(--accent); background: var(--accent-pale); display: inline-block; padding: 1px 8px; border-radius: 3px; margin-bottom: 6px; }
+  .project-bullets { list-style: none; }
+  .project-bullets li {
+    font-size: 12.5px;
+    padding: 3px 0 3px 16px;
+    position: relative;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .project-bullets li::before { content: '·'; position: absolute; left: 4px; color: var(--navy); font-size: 16px; line-height: 1.1; }
+
+  /* ── EXPERIENCE ── */
+  .exp-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-header { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+  .exp-title { font-size: 13.5px; font-weight: 700; color: var(--text); }
+  .exp-years { font-size: 11.5px; font-family: 'Arial', sans-serif; color: var(--navy-light); font-weight: 600; white-space: nowrap; }
+  .exp-org { font-size: 12.5px; color: var(--text-muted); font-style: italic; margin: 2px 0 6px; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 12.5px;
+    padding: 2px 0 2px 16px;
+    position: relative;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .exp-bullets li::before { content: '–'; position: absolute; left: 2px; color: var(--navy); }
+
+  /* ── REFEREES ── */
+  .referee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .referee-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .referee-name { font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .referee-role { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 5px; }
+  .referee-contact { font-size: 11.5px; font-family: 'Arial', sans-serif; color: var(--text-light); }
+  .referee-contact a { color: var(--navy-light); }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .stat-item { flex: 1; text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 700; color: white; font-family: 'Arial', sans-serif; line-height: 1; }
+  .stat-label { font-size: 10.5px; font-family: 'Arial', sans-serif; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+  .stat-sep { width: 1px; background: rgba(255,255,255,0.15); }
+
+  /* ── MISC ── */
+  .scholar-link {
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  @media print {
+    body { background: white; }
+    .cv-body { max-width: 100%; }
+    .project-card:hover { border-left-color: var(--navy); border-color: var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="cv-header">
+  <div class="cv-name">Yiyao Zhang</div>
+  <div class="cv-tagline">Expert Decision Systems &nbsp;·&nbsp; Multi-Agent Reinforcement Learning &nbsp;·&nbsp; Cyber Defence</div>
+  <div class="cv-contacts">
+    <span>Adelaide, South Australia, Australia</span>
+    <span><a href="mailto:yiyao663@gmail.com">yiyao663@gmail.com</a></span>
+    <span><a href="https://scholar.google.com/citations?user=21owr6IAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a></span>
+    <span><a href="https://www.linkedin.com/in/yiyao-zhang-3813a325a/" target="_blank">LinkedIn</a></span>
+  </div>
+</div>
+
+<!-- ===== BODY ===== -->
+<div class="cv-body">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="cv-sidebar">
+
+    <!-- Research Interests -->
+    <div class="section-title">Research Interests</div>
+    <div class="interest-grid">
+      <div class="interest-item">
+        <div class="interest-label">Expert Decision Systems</div>
+        <div class="interest-desc">Safety-certified decision support, explainable autonomy, and reliable agentic systems.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-label">Multi-Agent RL</div>
+        <div class="interest-desc">Dec-POMDPs, adversarial MARL, resilient coordination, and safety-constrained policies.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-label">Cyber Defence</div>
+        <div class="interest-desc">Autonomous cyber response, threat modelling, incident diagnosis, and containment planning.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-label">Causal Inference</div>
+        <div class="interest-desc">Causal world models, counterfactual reasoning, symbolic constraints, and structured inference.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-label">Mathematical Foundations</div>
+        <div class="interest-desc">Computational mathematics, optimisation, finite-element-inspired approximation, and convergence analysis.</div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section-title">Technical Skills</div>
+
+    <div class="skill-category">Programming</div>
+    <div class="chips">
+      <span class="chip blue">Python</span>
+      <span class="chip blue">R</span>
+      <span class="chip blue">SQL</span>
+      <span class="chip blue">MATLAB</span>
+      <span class="chip blue">C++</span>
+      <span class="chip blue">Java</span>
+    </div>
+
+    <div class="skill-category">AI / ML Libraries</div>
+    <div class="chips">
+      <span class="chip green">PyTorch</span>
+      <span class="chip green">TensorFlow</span>
+      <span class="chip green">Scikit-learn</span>
+      <span class="chip green">LangChain</span>
+      <span class="chip green">Pandas</span>
+      <span class="chip green">NumPy</span>
+      <span class="chip green">OpenCV</span>
+    </div>
+
+    <div class="skill-category">Tools & Infrastructure</div>
+    <div class="chips">
+      <span class="chip amber">Git</span>
+      <span class="chip amber">Docker</span>
+      <span class="chip amber">AWS</span>
+      <span class="chip amber">LaTeX</span>
+      <span class="chip amber">Jupyter</span>
+      <span class="chip amber">Linux</span>
+    </div>
+
+    <div class="skill-category">Languages & Tests</div>
+    <div class="chips">
+      <span class="chip">English: Fluent</span>
+      <span class="chip">Mandarin: Native</span>
+      <span class="chip">TOEFL 106/120</span>
+      <span class="chip">GRE 326/340</span>
+      <span class="chip">GRE Math 900/910</span>
+    </div>
+
+    <!-- Awards -->
+    <div class="section-title">Awards &amp; Achievements</div>
+    <ul class="award-list">
+      <li>Global Citizenship Scholarship, Adelaide<award-year class="award-year">2024–2026</award-year></li>
+      <li>5th Place, AUCPL Coding Competition<span class="award-year">Adelaide, 2025</span></li>
+      <li>Teaching Assistantship, U of South Carolina<span class="award-year">2017–2020</span></li>
+      <li>UCLA CSST Scholarship &amp; Aoqing Tang International Exchange Scholarship<span class="award-year">2014</span></li>
+      <li>National Scholarship &amp; University Scholarships, Jilin University<span class="award-year">2011–2015</span></li>
+      <li>2nd Prize, National Olympiad in Informatics<span class="award-year">2010</span></li>
+    </ul>
+
+    <!-- Memberships -->
+    <div class="section-title">IEEE Memberships</div>
+    <ul class="membership-list">
+      <li>IEEE Member</li>
+      <li>IEEE Computational Intelligence Society</li>
+      <li>IEEE Control Systems Society</li>
+      <li>IEEE Robotics and Automation Society</li>
+    </ul>
+
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="cv-main">
+
+    <!-- Research Statement -->
+    <div class="section-title">Research Statement</div>
+    <div class="statement-box">
+      My research develops <strong>trustworthy autonomous decision systems</strong> that unite causal reasoning, reinforcement learning, neuro-symbolic inference, and multi-agent coordination. I focus on AI architectures that reason strategically under uncertainty, justify their decisions, and remain reliable in high-stakes environments such as <strong>cyber defence, financial systems, and scientific decision support</strong>. My long-term agenda is to build <strong>verifiable, aligned, and safety-aware intelligent agents</strong> that integrate learning, structured reasoning, and formal reliability guarantees into deployable decision-support systems.
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Journal Articles</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Conference Papers</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Under Review</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num">15.5</div>
+        <div class="stat-label">Top Impact Factor</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-num">A*</div>
+        <div class="stat-label">Top Venue Target</div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section-title">Education</div>
+    <div class="edu-timeline">
+
+      <!-- PhD Offer CS -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">University of Wollongong, Wollongong, Australia</div>
+            <span class="edu-years">2026–2030</span>
+          </div>
+          <div class="edu-degree">PhD Offer in Computer Science</div>
+          <div class="edu-note">Advisor: Prof Jun Shen</div>
+        </div>
+      </div>
+
+      <!-- PhD Statistics USC -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">University of South Carolina, Columbia, USA</div>
+            <span class="edu-years">2017–2020</span>
+          </div>
+          <div class="edu-degree">PhD-level Study in Statistics</div>
+          <div class="edu-note" style="margin-bottom:3px;">PhD Qualifying Examination Passed</div>
+          <div class="edu-note">Completed PhD-level coursework and qualifying examination; program interrupted during the COVID-19 period.</div>
+        </div>
+      </div>
+
+      <!-- PhD Offer NUS -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot minor"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">National University of Singapore, Singapore</div>
+            <span class="edu-years">—</span>
+          </div>
+          <div class="edu-degree">PhD offer in Mathematics</div>
+        </div>
+      </div>
+
+      <!-- Master Data Science -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">Adelaide University, Adelaide, Australia</div>
+            <span class="edu-years">2024–2026</span>
+          </div>
+          <div class="edu-degree">Master of Data Science</div>
+          <div class="edu-meta" style="margin-top:3px;">
+            <div></div>
+            <span class="edu-gpa">GPA: 6.3/7.0, projected 6.4/7.0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master USC -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">University of South Carolina, Columbia, USA</div>
+            <span class="edu-years">2017–2019</span>
+          </div>
+          <div class="edu-degree">Master-level Data Science and Statistics Training</div>
+          <div class="edu-meta" style="margin-top:3px;">
+            <div></div>
+            <span class="edu-gpa">GPA: 3.6/4.0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Offers -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot minor"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">University of Melbourne; UNSW; NYU Courant; Georgia Tech</div>
+            <span class="edu-years">—</span>
+          </div>
+          <div class="edu-degree">Master offers in data science and mathematics</div>
+        </div>
+      </div>
+
+      <!-- Bachelor Jilin -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">Jilin University, Changchun, China</div>
+            <span class="edu-years">2011–2015</span>
+          </div>
+          <div class="edu-degree">Bachelor of Science in Computational Mathematics</div>
+          <div class="edu-meta" style="margin-top:3px;">
+            <div></div>
+            <span class="edu-gpa">Aoqing Tang Honor Class &nbsp;·&nbsp; GPA: 93/100</span>
+          </div>
+          <div class="edu-note">Jilin University is a Project 985/211 institution in China; selected into an elite mathematics honours program.</div>
+        </div>
+      </div>
+
+      <!-- UCLA -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot minor"></div>
+          <div class="edu-line"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">University of California, Los Angeles, USA</div>
+            <span class="edu-years">2014</span>
+          </div>
+          <div class="edu-degree">Bachelor Summer Research Program</div>
+          <div class="edu-meta" style="margin-top:3px;">
+            <div></div>
+            <span class="edu-gpa">UCLA-CSST Program &nbsp;·&nbsp; GPA: 3.8/4.0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Georgia Tech -->
+      <div class="edu-item">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="edu-dot minor"></div>
+        </div>
+        <div class="edu-content">
+          <div class="edu-meta">
+            <div class="edu-inst">Georgia Institute of Technology, Atlanta, USA</div>
+            <span class="edu-years">2014</span>
+          </div>
+          <div class="edu-degree">Bachelor Exchange Study in Applied Mathematics</div>
+          <div class="edu-meta" style="margin-top:3px;">
+            <div></div>
+            <span class="edu-gpa">GPA: 3.7/4.0</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Publications -->
+    <div class="section-title">Selected Publications</div>
+    <a class="scholar-link" href="https://scholar.google.com/citations?user=21owr6IAAAAJ&hl=zh-CN" target="_blank">Full list available on Google Scholar →</a>
+
+    <div class="pub-group-label">Journal Articles</div>
+    <ol class="pub-list" start="1">
+      <li class="pub-item">
+        <div class="pub-num">[1]</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0957417426016544" target="_blank">Explainable Autonomous Cyber Defense using Adversarial Multi-Agent Reinforcement Learning</a></div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, and H. Ahmad</div>
+          <div class="pub-venue">Expert Systems with Applications, accepted, No. ESWA-D-26-05576R2, 2026</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">ESWA</span>
+            <span class="badge badge-if">IF: 7.5</span>
+            <span class="badge badge-year">2026</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[2]</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11215751" target="_blank">RegimeFolio: A Regime-Aware ML System for Sectoral Portfolio Optimization in Dynamic Markets</a></div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, and C. Szabo</div>
+          <div class="pub-venue">IEEE Access, Vol. 13, pp. 184722–184744, 2025</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">IEEE Access</span>
+            <span class="badge badge-if">IF: 3.6</span>
+            <span class="badge badge-year">2025</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[3]</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11511735" target="_blank">AgentVM: Agentic Multi-Agent Software Vulnerability Management</a></div>
+          <div class="pub-authors">A. Arifin, H. Ahmad, <strong>Y. Zhang</strong>, and D. Goel</div>
+          <div class="pub-venue">IEEE Software, accepted, No. SWSI-2026-01-0012.R2, 2026</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">IEEE Software</span>
+            <span class="badge badge-if">IF: 3.0</span>
+            <span class="badge badge-year">2026</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="pub-group-label">Conference Papers</div>
+    <ol class="pub-list" start="4">
+      <li class="pub-item">
+        <div class="pub-num">[4]</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-981-95-4972-6_31" target="_blank">Synergistic MARL: Unifying Physics-Informed, Meta Learning, and Hybrid Learning</a></div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, Y. Dong, K. Yu, W. Liu, J. Zhou, B. Liang, and F. Chen</div>
+          <div class="pub-venue">Australasian Joint Conference on Artificial Intelligence (AJCAI), 2025</div>
+          <div class="pub-badges">
+            <span class="badge badge-conf">AJCAI</span>
+            <span class="badge badge-rank">CORE Rank B</span>
+            <span class="badge badge-year">2025</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[5]</div>
+        <div class="pub-body">
+          <div class="pub-title"><a href="https://dl.acm.org/doi/full/10.1145/3766557.3766565" target="_blank">AI-Edu-App: An Integrated AI Platform for K–12 Learning</a></div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, J. Huang, et al.</div>
+          <div class="pub-venue">ACM International Conference on Education Technology and AI (ICETAI), 2025</div>
+          <div class="pub-badges">
+            <span class="badge badge-conf">ACM ICETAI</span>
+            <span class="badge badge-year">2025</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="pub-group-label">Manuscripts Under Review</div>
+    <ol class="pub-list" start="6">
+      <li class="pub-item">
+        <div class="pub-num">[6]</div>
+        <div class="pub-body">
+          <div class="pub-title">VACS: Value-Aligned Compositional Shielding for Multi-Agent Reasoning</div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, H. Li, and J. Shen</div>
+          <div class="pub-venue">Under Review — Information Fusion</div>
+          <div class="pub-badges">
+            <span class="badge badge-review">Under Review</span>
+            <span class="badge badge-if">IF: 15.5</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[7]</div>
+        <div class="pub-body">
+          <div class="pub-title">CAUSALNAV: Neuro-Symbolic Reasoning over Learned Causal World Models</div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, H. Li, and J. Shen</div>
+          <div class="pub-venue">Under Review — NeurIPS 2026</div>
+          <div class="pub-badges">
+            <span class="badge badge-review">Under Review</span>
+            <span class="badge badge-rank">CORE A*</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[8]</div>
+        <div class="pub-body">
+          <div class="pub-title">Debate-to-Act: Dependable Multi-Agent Cyber Defense under Partial Observability and Safety Constraints</div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, H. Li, and J. Shen</div>
+          <div class="pub-venue">Under Review — IEEE Transactions on Dependable and Secure Computing (TDSC)</div>
+          <div class="pub-badges">
+            <span class="badge badge-review">Under Review</span>
+            <span class="badge badge-if">IF: 7.5</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[9]</div>
+        <div class="pub-body">
+          <div class="pub-title">Beyond Correctness: Decomposing LLM Rewards into Grounded Multi-Signal Channels for Step-Level Verification</div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, H. Li, and J. Shen</div>
+          <div class="pub-venue">Under Review — ACM Transactions on Intelligent Systems and Technology (TIST)</div>
+          <div class="pub-badges">
+            <span class="badge badge-review">Under Review</span>
+            <span class="badge badge-if">IF: 6.6</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[10]</div>
+        <div class="pub-body">
+          <div class="pub-title">SAGE: A Predict-Then-Decide World Model Framework for Autonomous Cyber Defense</div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, D. Goel, H. Ahmad, and M. Guo</div>
+          <div class="pub-venue">Under Review — Journal of Information Security and Applications (JISA)</div>
+          <div class="pub-badges">
+            <span class="badge badge-review">Under Review</span>
+            <span class="badge badge-if">IF: 3.7</span>
+          </div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <div class="pub-num">[11]</div>
+        <div class="pub-body">
+          <div class="pub-title">AdapTutor: An Evolving Dual-Agent Framework for Synchronous Learner Support in Online Learning Environments</div>
+          <div class="pub-authors"><strong>Y. Zhang</strong>, X. Fan, and L. Yue</div>
+          <div class="pub-venue">Under Review — IEEE Transactions on Education</div>
+          <div class="pub-badges">
+            <span class="badge badge-review">Under Review</span>
+            <span class="badge badge-if">IF: 2.0</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <!-- Selected Projects -->
+    <div class="section-title">Selected Projects</div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">Explainable Autonomous Cyber Defence with Adversarial MARL</div>
+        <div class="project-years">2025–2026</div>
+      </div>
+      <div class="project-collab">Collaboration with Diksha Goel and Hussain Ahmad</div>
+      <div class="project-output">→ Expert Systems with Applications</div>
+      <ul class="project-bullets">
+        <li>Developed a causal multi-agent decision framework for autonomous cyber defence under adversarial uncertainty and ambiguous telemetry.</li>
+        <li>Integrated causal modelling, adversarial dual-policy control, and explainable response reasoning to improve robust cyber decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">Agentic AI for Software Vulnerability Management</div>
+        <div class="project-years">2025–2026</div>
+      </div>
+      <div class="project-collab">Collaboration with Asrul Arifin, Hussain Ahmad, and Diksha Goel</div>
+      <div class="project-output">→ IEEE Software</div>
+      <ul class="project-bullets">
+        <li>Designed an agentic multi-agent vulnerability management system for aggregating, enriching, prioritising, and reporting software security findings.</li>
+        <li>Combined LLM-based agents with security tools to reduce raw scanner outputs into compact, actionable vulnerability queues.</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">Regime-Aware Machine Learning for Portfolio Optimisation</div>
+        <div class="project-years">2025</div>
+      </div>
+      <div class="project-collab">Collaboration with Diksha Goel, Hussain Ahmad, and Claudia Szabo</div>
+      <div class="project-output">→ IEEE Access</div>
+      <ul class="project-bullets">
+        <li>Developed <em>RegimeFolio</em>, a regime-aware ML framework for sector-specialised portfolio optimisation in dynamic markets.</li>
+        <li>Integrated volatility-regime detection, sector-specific ensemble forecasting, and adaptive mean–variance allocation.</li>
+      </ul>
+    </div>
+
+    <!-- Research Experience -->
+    <div class="section-title">Research &amp; Professional Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Research Intern — AI for Financial Markets</div>
+        <div class="exp-years">2024–2025</div>
+      </div>
+      <div class="exp-org">Australian Institute for Machine Learning, Adelaide, Australia</div>
+      <ul class="exp-bullets">
+        <li>Investigated deep learning and ML techniques for algorithmic trading and market decision support.</li>
+        <li>Designed, implemented, and backtested trading strategies using PyTorch, Scikit-learn, Pandas, and NumPy.</li>
+        <li>Collaborated with PhD researchers to adapt advanced AI models for market pattern identification and risk-aware decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">AI and Software Developer</div>
+        <div class="exp-years">2024–2025</div>
+      </div>
+      <div class="exp-org">Upwork–Syncove, Adelaide, Australia</div>
+      <ul class="exp-bullets">
+        <li>Designed quantitative analysis tools for financial markets using Python, Pandas, and NumPy.</li>
+        <li>Developed <em>Advanced Performance Analyzer Pro</em>, a Python desktop application for probabilistic recommendation and performance analytics.</li>
+        <li>Implemented risk-optimised allocation algorithms based on Modern Portfolio Theory and decision analytics.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Algorithm Engineer</div>
+        <div class="exp-years">2020–2023</div>
+      </div>
+      <div class="exp-org">Haier Electronics, Qingdao, China</div>
+      <ul class="exp-bullets">
+        <li>Developed ML algorithms for sales-volume forecasting, improving forecasting accuracy by approximately 15%.</li>
+        <li>Applied NLP methods to customer feedback to extract product-improvement insights and decision signals.</li>
+        <li>Designed and maintained database systems for large-scale sales analytics and operational decision support.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Teaching Assistant</div>
+        <div class="exp-years">2017–2020</div>
+      </div>
+      <div class="exp-org">University of South Carolina, Columbia, USA</div>
+      <ul class="exp-bullets">
+        <li>Taught statistical concepts, data analysis, and modelling fundamentals using R and Python.</li>
+        <li>Supported undergraduate tutorials in statistics, ML foundations, and applied data analysis.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-title">Research Project Team Member</div>
+        <div class="exp-years">2012–2015</div>
+      </div>
+      <div class="exp-org">Jilin University, Changchun, China</div>
+      <ul class="exp-bullets">
+        <li>Developed generalised linear models and predictive frameworks for large environmental datasets.</li>
+        <li>Conducted statistical analysis using R and SPSS to identify patterns in complex environmental and public-health data.</li>
+      </ul>
+    </div>
+
+    <!-- Referees -->
+    <div class="section-title">Referees</div>
+    <div class="referee-grid">
+      <div class="referee-card">
+        <div class="referee-name">Prof. Ran Zhang</div>
+        <div class="referee-role">Vice President &amp; Dean, School of Mathematics, Jilin University<br>Director, Tianyuan Mathematical Center in Northeast China</div>
+        <div class="referee-contact"><a href="mailto:zhangran@jlu.edu.cn">zhangran@jlu.edu.cn</a><br>+86 135 0447 5032</div>
+      </div>
+      <div class="referee-card">
+        <div class="referee-name">Prof. Jun Shen</div>
+        <div class="referee-role">Head, School of Computing &amp; IT, University of Wollongong<br>Director, Center for Applied Computing</div>
+        <div class="referee-contact"><a href="mailto:jun_shen@uow.edu.au">jun_shen@uow.edu.au</a><br>+61 2 4221 3873</div>
+      </div>
+      <div class="referee-card">
+        <div class="referee-name">Prof. Lin Liu</div>
+        <div class="referee-role">Director, 4LLab Data Analytics Group<br>Professor, STEM Unit, Adelaide University</div>
+        <div class="referee-contact"><a href="mailto:Lin.Liu@adelaide.edu.au">Lin.Liu@adelaide.edu.au</a></div>
+      </div>
+      <div class="referee-card">
+        <div class="referee-name">Prof. Wotao Yin</div>
+        <div class="referee-role">Director, Decision Intelligence Lab, DAMO Academy, Alibaba<br>Professor, University of California, Los Angeles</div>
+        <div class="referee-contact"><a href="mailto:wotao.yin@alibaba-inc.com">wotao.yin@alibaba-inc.com</a></div>
+      </div>
+    </div>
+
+    <div style="height: 32px;"></div>
+
+  </main>
+</div>
+
+</body>
+</html>
